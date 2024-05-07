@@ -92,13 +92,6 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="permissions-admin-views"
 ```
 
-## Usage
-
-```php
-$permissionsAdmin = new IhabAfia\PermissionsAdmin();
-echo $permissionsAdmin->echoPhrase('Hello, IhabAfia!');
-```
-
 ## Testing
 
 ```bash
