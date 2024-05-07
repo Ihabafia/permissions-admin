@@ -118,9 +118,9 @@
             </div>
         </div>
     </section>
-    <x-permissions-admin::modal name="permission-details">
+    <x-permissions-admin::modal name="permission-details" :action="$formAction">
         <x-slot:body>
-            <form wire:submit.prevent="{{$formAction}}" class="p-4 md:p-5">
+            <form class="p-4 md:p-5 overflow-y-scroll max-h-96">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <x-permissions-admin::forms.input wire:model="permissionForm.name"
@@ -131,10 +131,10 @@
 
                     <fieldset class="border border-lg rounded dark:ring-2 dark:ring-gray-400 grid grid-cols-2 col-span-2 mt-2">
                         <legend class="ml-2 px-3 bg-gray-700 font-extrabold">Roles</legend>
-                        <div class="grid gap-y-4 py-4 grid-cols-2 col-span-2" >
 
+                        <div class="grid gap-y-4 py-4 grid-cols-2 col-span-2" >
                             @foreach($rolesArray as $role)
-                                <div wire:key="{{ $selectedPermission->id ?? '' }}-{{ $role->id }}" class="<!--relative flex items-start--> pl-4 col-span-1 sm:col-span-1">
+                                <div wire:key="{{ $selectedPermission->id ?? '' }}-{{ $role->id }}" class="relative flex items-start pl-4 col-span-1 sm:col-span-1">
                                     <div class="flex h-6 items-center">
                                         <input
                                             wire:model.live="permissionForm.roles"
@@ -156,10 +156,6 @@
                     <div class="grid grid-cols-2 col-span-2 dark:text-red-500 -mt-3">{{ $message }}</div>
                     @enderror
                 </div>
-                <button type="submit"
-                        class="mt-2 text-white dark:text-gray-100 inline-flex items-center bg-teal-700 dark:bg-teal-500 hover:bg-teal-800 dark:hover:bg-teal-600 focus:ring-2 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <span x-text="title"></span>
-                </button>
             </form>
         </x-slot:body>
     </x-permissions-admin::modal>
