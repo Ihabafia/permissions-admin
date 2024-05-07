@@ -158,7 +158,7 @@
                 </div>
                 <button type="submit"
                         class="mt-2 text-white dark:text-gray-100 inline-flex items-center bg-teal-700 dark:bg-teal-500 hover:bg-teal-800 dark:hover:bg-teal-600 focus:ring-2 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    Update Permission
+                    <span x-text="title"></span>
                 </button>
             </form>
         </x-slot:body>

@@ -9,7 +9,7 @@
     {{ $attributes }}
     {{ $attributes->merge(['class' => "
         font-medium text-center
-        text-sm px-5 py-[0.55rem] ml-3
+        text-sm px-5 py-2 ml-3
         rounded-lg border-2
         focus:ring-2
         focus:outline-none

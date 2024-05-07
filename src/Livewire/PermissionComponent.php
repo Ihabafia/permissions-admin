@@ -112,6 +112,7 @@ class PermissionComponent extends Component
 
     public function editPermission(Permission $permission)
     {
+        $this->resetErrorBag();
         $this->permissionForm->name = $permission->name;
         $this->permissionForm->roles = $permission->roles->pluck('name')->toArray();
 

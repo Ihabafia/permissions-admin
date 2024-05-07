@@ -102,6 +102,7 @@ class RoleComponent extends Component
 
     public function editRole(Role $role)
     {
+        $this->resetErrorBag();
         $this->roleForm->name = $role->name;
         $this->roleForm->permissions = $role->permissions->pluck('name')->toArray();
 

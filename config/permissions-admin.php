@@ -5,24 +5,42 @@
  */
 return [
     /*
-     * This is the route of your home application.
+     * This is the route of your home application for admins.
      */
-    'home' => 'admin.dashboard',
+    'admin-home' => 'dashboard',
+
+    /*
+     * This is the route of your home application for users (it can be the same as the above).
+     */
+    'user-home' => 'dashboard',
+
+    /*
+     * This is the route of your user profile.
+     */
+    'user-profile' => 'user/profile',
 
     /*
      * In case you want to change the route of the user management route.
      */
-    'users_index' => 'admin.users',
-    'users_management' => 'admin.users-management.index',
+    'users-index' => 'users',
 
     /*
      * In case you want to change the route of the roles management route.
      */
-    'roles_index' => 'admin.roles',
+    'roles-index' => 'roles',
 
     /*
      * In case you want to change the route of the permissions management route.
      */
-    'permissions_index' => 'admin.permissions',
+    'permissions-index' => 'permissions',
+
+    /*
+     * Using Gravatar in the Users list (Pending)
+     */
+    'use-gravatar' => false,
+
+    /*
+     * The url to Gravatar website. (Pending)
+     */
     'gravatar_url' => 'https://www.gravatar.com/avatar/',
 ];
