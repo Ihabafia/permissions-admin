@@ -63,12 +63,15 @@ class Permission extends SpatiePermission
 ```php
 namespace App\Models;
 
+use Spatie\Permission\Traits\HasRoles;
 use IhabAfia\PermissionsAdmin\Traits\HasPermissionAdmin;
 
 class User extends Authenticatable
 {
+    use HasRoles;
     use HasPermissionAdmin;
     ...
+}
 ````
 This trait is needed for adding the search functionality to the 3 models.
 
