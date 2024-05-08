@@ -80,13 +80,13 @@ This trait is needed for adding the search functionality to the 3 models.
 Route::rolesPermissionsAdmin();
 ```
 
-You might need to publish the config file to change routes with:
+You might need to publish the config file to change default routes with your own:
 
 ```bash
 php artisan vendor:publish --tag="permissions-admin-config"
 ```
 
-Optionally, you can publish the views using
+Optionally but recommended, you can publish the views using the command bellow, to make sure you get the correct styling of all the component.
 
 ```bash
 php artisan vendor:publish --tag="permissions-admin-views"

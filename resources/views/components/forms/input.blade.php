@@ -1,5 +1,4 @@
 @props([
-    'type' => 'text',
     'name',
     'id',
     'label',
@@ -38,6 +37,7 @@
 @else
     <input id="{{ $id ?? $name ?? $label }}"
            {{ $disabled ? 'disabled' : '' }}
+           {{ $attributes }}
            {!! $attributes->merge(['class' => "
         p-2.5 ml-0.5 w-full block rounded-lg
         ring-1 border-2

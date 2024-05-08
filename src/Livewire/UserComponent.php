@@ -16,6 +16,8 @@ class UserComponent extends Component
 
     public ?UserForm $userForm;
 
+    public ?string $formAction = null;
+
     #[Url(history: true)]
     public string $search = '';
 
@@ -84,24 +86,28 @@ class UserComponent extends Component
     {
         $this->userForm->name = $user->name;
         $this->userForm->email = $user->email;
-        $this->userForm->roles = $user->roles->pluck('name', 'id')->toArray();
+        $this->userForm->roles = $user->roles->pluck('name')->toArray();
 
         if (count($this->userForm->roles) == 0) {
             $this->userForm->roles[3] = 'User';
         }
         $this->selectedUser = $user;
+        $this->formAction = 'updateUser';
 
-        $this->dispatch('open-modal', name: 'user-details');
+        $this->dispatch('open-modal', name: 'user-details', title: 'Update User');
     }
 
     public function updateUser()
     {
         $this->validate();
 
-        $this->selectedUser->update([
-            'name' => $this->userForm->name,
-            'email' => $this->userForm->email,
-        ]);
+        $data['email'] = $this->userForm->email;
+
+        if (! config('permissions-admin.disable-user-edit')) {
+            $data['name'] = $this->userForm->name;
+        }
+
+        $this->selectedUser->update($data);
 
         $this->selectedUser->syncRoles($this->userForm->roles);
 

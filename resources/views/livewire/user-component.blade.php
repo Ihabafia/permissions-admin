@@ -126,24 +126,46 @@
             </div>
         </div>
     </section>
-    <x-permissions-admin::modal name="user-details" title="Update User">
+    <x-permissions-admin::modal name="user-details" :action="$formAction">
         <x-slot:body>
-            <form wire:submit.prevent="updateUser" class="p-4 md:p-5">
+            <form class="p-4 md:p-5 overflow-y-scroll max-h-96">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <x-permissions-admin::forms.input wire:model="userForm.name" name="userForm.name"
+                        @if(config('permissions-admin.disable-user-edit'))
+                        <x-permissions-admin::forms.input wire:model="userForm.name"
+                                                          type="hidden"
+                                                          name="userForm.name"
                                                           label="Full Name"/>
+
+                            <div class="
+                                ring-1
+                                p-2.5 w-full block border rounded-lg sm:leading-6
+                                bg-gray-50 dark:bg-gray-400
+                                border-gray-300 dark:border-gray-400
+                                text-gray-900 dark:text-gray-100
+                                focus:ring-teal-600 dark:focus:ring-teal-500
+                                focus:border-teal-600 dark:focus:border-teal-500
+                                placeholder-gray-300 dark:placeholder-gray-300
+                            ">
+                                {{ $userForm->name }}
+                            </div>
+                        @else
+                        <x-permissions-admin::forms.input wire:model="userForm.name"
+                                                          name="userForm.name"
+                                                          label="Full Name"/>
+                        @endif
                     </div>
                     <div class="col-span-2">
-                        <x-permissions-admin::forms.input wire:model="userForm.email" name="userForm.email"
+                        <x-permissions-admin::forms.input wire:model="userForm.email"
+                                                          name="userForm.email"
                                                           label="Email Address"/>
                     </div>
 
 
                     <fieldset class="border border-lg rounded dark:ring-2 dark:ring-gray-400 grid grid-cols-2 col-span-2 mt-2">
                         <legend class="ml-2 px-3 bg-gray-700 font-extrabold">Roles</legend>
-                        <div class="grid gap-y-4 py-4 grid-cols-2 col-span-2" >
 
+                        <div class="grid gap-y-4 py-4 grid-cols-2 col-span-2" >
                             @foreach($rolesArray as $role)
                                 <div wire:key="{{ $selectedUser->id ?? '' }}-{{ $role->id }}" class="<!--relative flex items-start--> pl-4 col-span-1 sm:col-span-1">
                                     <div class="flex h-6 items-center">
@@ -163,32 +185,10 @@
                         </div>
                     </fieldset>
 
-                    {{--<div class="border border-lg rounded dark:ring-2 dark:ring-gray-400 grid gap-y-4 py-4 grid-cols-2 col-span-2 mt-2">
-                        @foreach($rolesArray as $role)
-                        <div wire:key="{{ $selectedUser->id ?? '' }}-{{ $role->id }}" class="<!--relative flex items-start--> pl-4 col-span-1 sm:col-span-1">
-                            <div class="flex h-6 items-center">
-                                <input
-                                    type="checkbox"
-                                    wire:change="updateRole({{$role->id}})"
-                                    id="updateRole-{{$role->id}}"
-                                    {{ in_array($role->name, $userForm->roles ?? []) ? 'checked':'' }}
-                                    class="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-600"
-                                >
-                            </div>
-                            <div class="ml-3 text-sm leading-6">
-                                <label for="updateRole-{{$role->id}}" class="font-medium text-gray-900 dark:text-gray-100">{{ $role->name }}</label>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>--}}
                     @error('userForm.roles')
                     <div class="grid grid-cols-2 col-span-2 dark:text-red-500 -mt-3">{{ $message }}</div>
                     @enderror
                 </div>
-                <button type="submit"
-                        class="mt-2 text-white dark:text-gray-100 inline-flex items-center bg-teal-700 dark:bg-teal-500 hover:bg-teal-800 dark:hover:bg-teal-600 focus:ring-2 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    Update User
-                </button>
             </form>
         </x-slot:body>
     </x-permissions-admin::modal>

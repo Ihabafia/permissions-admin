@@ -35,12 +35,13 @@ return [
     'permissions-index' => 'permissions',
 
     /*
-     * Using Gravatar in the Users list (Pending)
-     */
-    'use-gravatar' => false,
+    * You can disable editing the user name, in case you are gonna use first_name and last_name instead of name field.
+    */
+    'disable-user-edit' => false,
 
     /*
-     * The url to Gravatar website. (Pending)
+     * The url to Gravatar website.
      */
+    'use-gravatar' => false,
     'gravatar_url' => 'https://www.gravatar.com/avatar/',
 ];
