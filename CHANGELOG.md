@@ -2,6 +2,9 @@
 
 All notable changes to `permissions-admin` will be documented in this file.
 
+## 1.0.4 - 2024-05-10
+- Allow user to change the dark mode from the config file.
+
 ## 1.0.3 - 2024-05-10
 - No need to create a Roles and Permission classes in the application.
 - Minor bug fixes.

@@ -4,6 +4,12 @@
  * This package will be using the Spatie Config File permission.php
  */
 return [
+
+    /*
+     * To have the default package in dark mode.
+     */ 
+    'dark-mode' => true,
+
     /*
      * This is the route of your home application for admins.
      */
