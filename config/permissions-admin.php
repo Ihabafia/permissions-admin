@@ -7,7 +7,7 @@ return [
 
     /*
      * To have the default package in dark mode.
-     */ 
+     */
     'dark-mode' => true,
 
     /*

@@ -2,13 +2,13 @@
 
 namespace IhabAfia\PermissionsAdmin\Livewire;
 
+use App\Models\Role;
 use App\Models\User;
 use IhabAfia\PermissionsAdmin\Livewire\Forms\UserForm;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Spatie\Permission\Models\Role;
 
 class UserComponent extends Component
 {
@@ -89,7 +89,7 @@ class UserComponent extends Component
         $this->userForm->roles = $user->roles->pluck('name')->toArray();
 
         if (count($this->userForm->roles) == 0) {
-            $this->userForm->roles[3] = 'User';
+            $this->userForm->roles[] = 'User';
         }
         $this->selectedUser = $user;
         $this->formAction = 'updateUser';

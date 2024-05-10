@@ -170,13 +170,13 @@
 
                         <div class="grid gap-y-4 py-4 grid-cols-2 col-span-2" >
                             @foreach($rolesArray as $role)
-                                <div wire:key="{{ $selectedUser->id ?? '' }}-{{ $role->id }}" class="<!--relative flex items-start--> pl-4 col-span-1 sm:col-span-1">
+                                <div class="relative flex items-start pl-4 col-span-1 sm:col-span-1">
                                     <div class="flex h-6 items-center">
                                         <input
+                                            wire:model="userForm.roles"
+                                            value="{{ $role->name }}"
                                             type="checkbox"
-                                            wire:change="updateRole({{$role->id}})"
                                             id="updateRole-{{$role->id}}"
-                                            {{ in_array($role->name, $userForm->roles ?? []) ? 'checked':'' }}
                                             class="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-600"
                                         >
                                     </div>
