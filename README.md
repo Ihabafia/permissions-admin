@@ -33,33 +33,7 @@ composer require spatie/laravel-permission
 ```bash
 composer require livewire/livewire 
 ```
-3. You need to create and empty ```App\Models\Role``` and ```App\Models\Permission``` class and add ```HasPermissionAdmin``` trait as follows:
-```php
-namespace App\Models;
-
-use IhabAfia\PermissionsAdmin\Traits\HasPermissionAdmin;
-use Spatie\Permission\Models\Role as SpatieRole;
-
-class Role extends SpatieRole
-{
-    use HasPermissionAdmin;
-}
-
-````
-```php
-namespace App\Models;
-
-use IhabAfia\PermissionsAdmin\Traits\HasPermissionAdmin;
-use Spatie\Permission\Models\Permission as SpatiePermission;
-
-class Permission extends SpatiePermission
-{
-    use HasPermissionAdmin;
-}
-````
-**These classes will not affect your application since these classes extends the original class.**
-
-4. You need to add ```HasPermissionAdmin``` trait in your ```User::class``` like follows:
+3. You need to add ```HasPermissionAdmin``` trait in your ```User::class``` like follows:
 ```php
 namespace App\Models;
 

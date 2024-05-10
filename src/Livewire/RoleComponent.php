@@ -2,9 +2,9 @@
 
 namespace IhabAfia\PermissionsAdmin\Livewire;
 
-use App\Models\Permission;
-use App\Models\Role;
 use IhabAfia\PermissionsAdmin\Livewire\Forms\RoleForm;
+use IhabAfia\PermissionsAdmin\Models\Permission;
+use IhabAfia\PermissionsAdmin\Models\Role;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;

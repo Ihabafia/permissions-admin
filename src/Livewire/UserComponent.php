@@ -22,7 +22,7 @@ class UserComponent extends Component
     public string $search = '';
 
     #[Url(history: true)]
-    public string $role = '';
+    public string $filter = '';
 
     #[Url(history: true)]
     public string $sortBy = 'created_at';
@@ -46,7 +46,7 @@ class UserComponent extends Component
     public function users()
     {
         return User::search($this->search)
-            ->when($this->role !== '', function ($query) {
+            ->when($this->filter !== '', function ($query) {
                 $query->whereHas('roles', function ($query) {
                     $query->where('name', 'like', "%{$this->role}%");
                 });

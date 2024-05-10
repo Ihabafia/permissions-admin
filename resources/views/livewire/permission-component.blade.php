@@ -22,10 +22,13 @@
                                 </svg>
                             </div>
                             <input
-                                wire:model.live.debounce.400ms="search"
-                                type="text"
                                 class="dark:bg-gray-700 bg-gray-50 border border-gray-300 dark:border-gray-500 text-gray-900 dark:text-gray-100 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full pl-10 p-2 "
-                                placeholder="Search" required="">
+                                wire:model.live.debounce.400ms="search"
+                                id="search"
+                                name="search"
+                                type="text"
+                                placeholder="Search"
+                            >
                         </div>
                     </div>
                     <div class="flex space-x-0">
@@ -160,3 +163,10 @@
         </x-slot:body>
     </x-permissions-admin::modal>
 </div>
+@push('scripts')
+<script>
+    window.addEventListener('livewire:load', () => {
+        document.querySelector('input').focus()
+    })
+</script>
+@endpush
