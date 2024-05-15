@@ -40,11 +40,14 @@ class PermissionsAdminServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         Route::macro('rolesPermissionsAdmin', function (string $baseUrl = '/') {
-            Route::prefix($baseUrl)->group(function () {
-                Route::get('users', UserComponent::class)->name('users');
-                Route::get('roles', RoleComponent::class)->name('roles');
-                Route::get('permissions', PermissionComponent::class)->name('permissions');
-            });
+            Route::middleware('auth')
+                ->prefix($baseUrl)
+                ->group(function () {
+                    Route::get('users', UserComponent::class)->name('users');
+                    Route::get('roles', RoleComponent::class)->name('roles');
+                    Route::get('permissions', PermissionComponent::class)
+                        ->name('permissions');
+                });
         });
     }
 }
